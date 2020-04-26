@@ -1,7 +1,7 @@
 # Original credit: https://github.com/jpetazzo/dockvpn
 
 # Smallest base image
-FROM alpine:latest
+FROM alpine:3.8
 
 LABEL maintainer="Kyle Manna <kyle@kylemanna.com>"
 
@@ -15,7 +15,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 ENV OPENVPN /etc/openvpn
 ENV EASYRSA /usr/share/easy-rsa
 ENV EASYRSA_PKI $OPENVPN/pki
-ENV EASYRSA_VARS_FILE $OPENVPN/vars
+# ENV EASYRSA_VARS_FILE $OPENVPN/vars   ## disable since easy-rsa=3.7 not necessary   https://bbs.archlinux.org/viewtopic.php?id=244380
 
 # Prevents refused client connection because of an expired CRL
 ENV EASYRSA_CRL_DAYS 3650
